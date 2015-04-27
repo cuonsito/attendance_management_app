@@ -19,6 +19,8 @@ group :development do
 end
 
 group :develoment, :test do
-	gem 'rspec-rails'
+	gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
