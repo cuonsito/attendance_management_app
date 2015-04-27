@@ -1,0 +1,31 @@
+# PostgreSQL version 9.4.1
+#   brew install postgresql
+#
+#   Ensure the PostgreSQL gem is defined in your Gemfile
+#   gem 'pg', '0.15.1'
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: attendance_management_app_development
+  pool: 5
+  username: 
+  password:
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  adapter: postgresql
+  encoding: utf8
+  database: attendance_management_app_test
+  pool: 5
+  username: 
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: dattendance_management_app
+  pool: 5
+  username: 
+  password:
