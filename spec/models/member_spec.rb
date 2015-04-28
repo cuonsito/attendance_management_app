@@ -2,16 +2,37 @@ require 'spec_helper'
 
 describe Member do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:project) { FactoryGirl.create(:project) }
-  let(:admin) { FactoryGirl.create(:admin) }
-  
   before do
-    @member = Member.new(assain_rate: "0.5")
+    @project = FactoryGirl.create(:project)
+    @user = FactoryGirl.create(:user)
+    @member = FactoryGirl.build(:member, project: @project, user: @user)
   end
 
-  it { should respond_to(:user_id) }
-  it { should respond_to(:project_id) }
+  subject { @member }
+
   it { should respond_to(:assain_rate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:project) }
+  it { should respond_to(:user) }
+
+  it { should be_valid }
+
+  describe "when member is not unique" do
+    before do
+      member_with_same_user = @member.dup
+      member_with_same_user.save
+    end
+    it { should_not be_valid }
+  end
+
+  describe "with invalid assain_rate"do
+    context "when assain_rate < 0" do
+      before { @member.assain_rate = -1 }
+      it { should_not be_valid }
+    end
+    context "when assain_rate > 1" do
+      before { @member.assain_rate = 2 }
+      it { should_not be_valid }
+    end
+  end
 end
