@@ -25,3 +25,7 @@ group :develoment, :test do
   gem 'capybara'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+end
