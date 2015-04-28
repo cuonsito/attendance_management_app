@@ -4,5 +4,5 @@ describe Project do
 
   let(:project) { FactoryGirl.create(:project) }
 
-  it { should respond_to(:names) }
+  it { should respond_to(:name) }
 end
