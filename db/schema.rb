@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20150428025019) do
     t.datetime "updated_at"
   end
 
+  add_index "members", ["user_id", "project_id"], name: "index_members_on_user_id_and_project_id", unique: true, using: :btree
+
   create_table "projects", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150428025019) do
     t.datetime "updated_at"
   end
 
+  add_index "working_times", ["user_id", "project_id", "date"], name: "index_working_times_on_user_id_and_project_id_and_date", unique: true, using: :btree
   add_index "working_times", ["user_id", "project_id"], name: "index_working_times_on_user_id_and_project_id", using: :btree
 
 end
