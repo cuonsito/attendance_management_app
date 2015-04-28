@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427080615) do
+ActiveRecord::Schema.define(version: 20150427103613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,23 @@ ActiveRecord::Schema.define(version: 20150427080615) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name",                       null: false
-    t.string   "email",                      null: false
-    t.string   "password",                   null: false
+    t.string   "name",       null: false
+    t.string   "email",      null: false
+    t.string   "password",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",      default: false
   end
+
+  create_table "working_times", force: true do |t|
+    t.float    "time"
+    t.date     "date"
+    t.boolean  "approval",   default: false
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "working_times", ["user_id", "project_id"], name: "index_working_times_on_user_id_and_project_id", using: :btree
 
 end

@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Project do
 
-  before { @project = Project.new(name: "project1") }
+  let(:project) { FactoryGirl.create(:project) }
 
-  subject { @project }
-
-  it { should respond_to(:name) }
+  it { should respond_to(:names) }
 end
