@@ -18,4 +18,15 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :working_time do
+    user
+    project    
+    time 1.5
+    date "2015/4/1"
+    
+    factory :apploval do
+      admin true
+    end
+  end
 end
