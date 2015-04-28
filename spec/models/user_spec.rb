@@ -3,8 +3,9 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar")
+    @project = FactoryGirl.build(:project)
+    @user = FactoryGirl.build(:user)
+    @member = FactoryGirl.build(:member, project: @project, user: @user)
   end
 
   subject { @user }
@@ -12,6 +13,10 @@ describe User do
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password) }
+  it { should respond_to(:members) }
+  it { should respond_to(:projects) }
+
+  it { should be_valid }
 
   describe "when name is not present" do
     before { @user.name = " " }
