@@ -1,5 +1,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 require 'rspec/rails'
 require 'database_cleaner'
 
@@ -33,6 +34,10 @@ RSpec.configure do |config|
  
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  RSpec.configure do |config|
+    config.include Rails.application.routes.url_helpers
   end
   
   # rspec-expectations config goes here. You can use an alternate
@@ -102,4 +107,6 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.include Capybara::DSL
 end

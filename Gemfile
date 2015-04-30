@@ -15,14 +15,14 @@ gem 'devise'
 
 group :development do
   gem 'spring'
-  gem 'pry'
-  gem 'pry-rails'
 end
 
 group :develoment, :test do
 	gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :test do
