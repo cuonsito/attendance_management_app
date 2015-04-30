@@ -21,6 +21,8 @@ describe "Static Pages" do
     visit root_path
     click_link "Attendance Management App"
     expect(page).to have_title(full_title(''))
+    click_link "Sign in"
+    expect(page).to have_title(full_title('Sign in'))
   end
 end
 
