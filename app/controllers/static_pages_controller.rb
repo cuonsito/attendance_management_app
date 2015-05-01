@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def menu
   end
+
+  def list
+  end
 end

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :delete]
   root 'static_pages#home'
   match '/menu',  to: 'static_pages#menu', via: 'get'
+  match '/list',  to: 'static_pages#list', via: 'get'
 end
