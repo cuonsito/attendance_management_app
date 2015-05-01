@@ -4,7 +4,7 @@ describe "Menu Pages" do
 
   subject { page }
 
-  describe "Menu page" do
+  describe "Menu page" , type: :request do
     let(:user) { FactoryGirl.create(:user) }
     before do
       login user
