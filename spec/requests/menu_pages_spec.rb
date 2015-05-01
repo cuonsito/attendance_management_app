@@ -7,7 +7,7 @@ describe "Menu Pages" do
   describe "Menu page" do
     let(:user) { FactoryGirl.create(:user) }
     before do
-      login_user
+      login user
       visit menu_path
     end
 
