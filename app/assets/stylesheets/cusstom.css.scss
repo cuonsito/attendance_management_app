@@ -64,10 +64,19 @@ p {
 
 /* header */
 
-header a {
+header {
   color: #ffffff;
-  &:hover {
-    color: $gray-light;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 5px 0 5px 0;
+  
+  a {
+    color: #ffffff;
+    &:hover {
+     color: $gray-light;
+    }
   }
 }
 
@@ -103,6 +112,7 @@ footer {
 }
 
 /* cuon image */
+
 #top_cuon_photo {
   opacity: 0.7;
 }
