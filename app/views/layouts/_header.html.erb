@@ -1,0 +1,35 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <div style="font-size:large">
+        <nav>
+          <div class="nav pull-left">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>            
+          </div>
+          <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+          <% if user_signed_in? %> 
+            <div class="nav pull-right">
+
+              <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+              <!-- *_path はUserモデルを作成したときに、
+                deviseにより自動で作成されてますので、rake routesで確認できます -->
+              Logged in as <strong><%= current_user.email %></strong>.
+              <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </div>
+          <% else %>
+            <%= link_to "Attendance Management App", root_path %>
+            <div class="nav pull-right">
+              <%= link_to "Sign up", new_user_registration_path %> |
+              <%= link_to "Login", new_user_session_path %>
+            </div>  
+          <% end %>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    
