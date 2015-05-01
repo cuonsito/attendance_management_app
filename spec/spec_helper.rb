@@ -107,4 +107,5 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
   config.include Devise::TestHelpers, type: :controller
+  config.extend ControllerMacros, :type => :controller
 end
