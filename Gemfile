@@ -23,6 +23,7 @@ group :develoment, :test do
   gem 'capybara'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do
