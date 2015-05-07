@@ -1,4 +1,4 @@
-class AttendanceController < ApplicationController
+class AttendancesController < ApplicationController
   before_action :authenticate_user!, only: :show
 
   def show
