@@ -1,0 +1,14 @@
+<h1><%= @user.username %>さんのマイページ</h1>
+
+<% if !@user.working_times.empty? %>
+  <li><%= @user.working_times.first.date %></li>
+  <li><%= Project.find(@user.working_times.first.project_id).name %></li>
+  <li><%= @user.working_times.first.time %></li>
+  <li>
+    <% if @user.working_times.first.approval == true %>
+      <p>承認済み</p>
+    <% else %>
+      <p>承認待ち</p>
+    <% end %>
+  </li>
+<% end %>
