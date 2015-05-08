@@ -1,0 +1,20 @@
+<h1><%= @user.username %>さんのマイページ</h1>
+
+<%= form_for([@user, @user.working_times.build]) do |f| %>
+  <div class="row">
+    <div class="col-md-3, col-md-offset-4">
+      <%= date_select 'date-normal', '', {use_month_numbers: true} %>
+
+      <%= f.collection_select :project_id, Project.all, :id, :name %>
+
+      <%= f.label :time %>
+      <%= f.time_field :time, max: 8.0, min: 0%>
+
+      <%= f.submit "push", class: "btn btn-large btn-primary" %>
+
+    </div>
+  </div>
+<%- end -%>
+
+
+

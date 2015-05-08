@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
   def menu
   end
 
-  def list
+  def users
     @users = User.all
   end
 end

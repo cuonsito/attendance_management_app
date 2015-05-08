@@ -3,7 +3,7 @@
   <h1>社員一覧</h1>
   <h2>
     <% @users.each do |user| %>
-      <li><%= link_to user.username, attendance_path(user) %></li>
+      <li><%= link_to user.username, user_working_times_path(user) %></li>
     <% end %>
   </h2>
 </div>
