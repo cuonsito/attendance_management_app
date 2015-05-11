@@ -14,7 +14,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.time_field :time, :placeholder => "time: 0 to 8.0", max: 8.0, min: 0, class: 'form-control'%>
+        <%= f.number_field :time, :placeholder => "time", max: 8.0, min: 0, step: 0.1, class: 'form-control'%>
       </div>
 
       <div class="form-group">
