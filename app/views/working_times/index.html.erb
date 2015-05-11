@@ -1,31 +1,43 @@
 <h1><%= @user.username %>さんのマイページ</h1>
 
-<%= form_for([@user, @working_time]) do |f| %>
-  <div class="form-inline">
-    <div class="col-md-offset-4 col-md-4">
+<div class="row">
+  <div class="col-md-offset-4">
+    <%= form_for([@user, @working_time], :html => {class: "form-inline"}) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.date_select 'date', {use_month_numbers: true}, class: 'form-control' %>
+      <div class="form-group">
+        <%= f.date_select 'date', {use_month_numbers: true}, class: 'form-control' %>
+      </div>
 
-      <%= f.collection_select :project_id, Project.all, :id, :name,　class: 'form-control'%>
+      <div class="form-group">
+        <%= f.collection_select :project_id, Project.all, :id, :name, {}, {:class => "form-control"} %>
+      </div>
 
-      <%= f.time_field :time, :placeholder => "time: 0 to 8.0", max: 8.0, min: 0, class: 'form-control'%>
+      <div class="form-group">
+        <%= f.time_field :time, :placeholder => "time: 0 to 8.0", max: 8.0, min: 0, class: 'form-control'%>
+      </div>
 
-      <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
-    </div>
-  </div>
-<% end %>
-
-<div class="col-md-4 col-md-offset-4">
-  <ul>
-    <% @user.working_times.each do |working_time| %>
-      <li>
-        <%= working_time.date %>
-        <%= working_time.project.name %>
-        <%= working_time.time %>
-        <%= working_time.approval? ? "承認済み" : "承認待ち" %>
-      </li>
+      <div class="form-group">
+        <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
 
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-8">
+    <ul>
+      <% @user.working_times.each do |working_time| %>
+        <li>
+          <%= working_time.date %>
+          <%= working_time.project.name %>
+          <%= working_time.time %>
+          <%= working_time.approval? ? "承認済み" : "承認待ち" %>
+          <%= render 'shared/delete_link', path: working_time_path(working_time), title: working_time %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

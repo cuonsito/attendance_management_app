@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # resources :attendances, only: [:show, :create]
 
   resources :users, only: [:index], shallow: true do 
-    resources :working_times, only: [:index, :create]
+    resources :working_times, only: [:index, :create, :destroy]
   end
 end

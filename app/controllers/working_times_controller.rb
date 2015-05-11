@@ -20,6 +20,13 @@ class WorkingTimesController < ApplicationController
     end
   end
 
+  def destroy
+    @working_time = WorkingTime.find(params[:id])
+    @working_time.destroy
+    redirect_to user_working_times_path(@working_time.user_id)
+  end
+
+
   private
 
     def working_time_params
