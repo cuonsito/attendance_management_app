@@ -10,7 +10,7 @@ describe User do
 
   subject { @user }
 
-  it { should respond_to(:name) }
+  it { should respond_to(:username) }
   it { should respond_to(:email) }
   it { should respond_to(:password) }
   it { should respond_to(:members) }
@@ -19,7 +19,7 @@ describe User do
   it { should be_valid }
 
   describe "when name is not present" do
-    before { @user.name = " " }
+    before { @user.username = " " }
     it { should_not be_valid }
   end
 
@@ -29,7 +29,7 @@ describe User do
   end
 
   describe "when name is too long" do
-    before { @user.name = "a" * 51 }
+    before { @user.username = "a" * 51 }
     it { should_not be_valid }
   end
 
@@ -66,7 +66,7 @@ describe User do
 
   describe "when password is not present" do
     before do
-      @user = User.new(name: "Example User", email: "user@example.com",
+      @user = User.new(username: "Example User", email: "user@example.com",
                        password: " ")
     end
     it { should_not be_valid }

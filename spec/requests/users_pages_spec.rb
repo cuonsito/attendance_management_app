@@ -8,7 +8,7 @@ describe "List Pages" do
     let(:user) { FactoryGirl.create(:user) }
     before do
       login user
-      visit list_path
+      visit users_path
     end
 
     it { should have_content('社員一覧') }

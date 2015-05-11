@@ -12,8 +12,8 @@ describe Member do
 
   it { should respond_to(:assain_rate) }
   it { should respond_to(:admin) }
-  it { should respond_to(:project) }
-  it { should respond_to(:user) }
+  it { should respond_to(:project_id) }
+  it { should respond_to(:user_id) }
 
   it { should be_valid }
 
