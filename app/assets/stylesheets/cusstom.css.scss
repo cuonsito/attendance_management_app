@@ -113,10 +113,10 @@ footer {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, select, .uneditable-input, .btn {
   border: 1px solid #bbb;
   width: 100%;
-  padding: 10px;
+  padding: auto;
   margin-bottom: 15px;
   @include box_sizing;
 }

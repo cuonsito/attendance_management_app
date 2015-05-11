@@ -1,28 +1,30 @@
 <h1><%= @user.username %>さんのマイページ</h1>
 
-<div class="row">
-  <div class="col-md-offset-4">
-    <%= form_for([@user, @working_time], :html => {class: "form-inline"}) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+<% if current_user == @user %>
+  <div class="row">
+    <div class="col-md-offset-4">
+      <%= form_for([@user, @working_time], :html => {class: "form-inline"}) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <div class="form-group">
-        <%= f.date_select 'date', {use_month_numbers: true}, class: 'form-control' %>
-      </div>
+        <div class="form-group">
+          <%= f.date_select 'date', {use_month_numbers: true}, class: 'form-control' %>
+        </div>
 
-      <div class="form-group">
-        <%= f.collection_select :project_id, Project.all, :id, :name, {}, {:class => "form-control"} %>
-      </div>
+        <div class="form-group">
+          <%= f.collection_select :project_id, Project.all, :id, :name, {}, {:class => "form-control"} %>
+        </div>
 
-      <div class="form-group">
-        <%= f.number_field :time, :placeholder => "time", max: 8.0, min: 0, step: 0.1, class: 'form-control'%>
-      </div>
+        <div class="form-group">
+          <%= f.number_field :time, :placeholder => "time", max: 8.0, min: 0, step: 0.1, class: 'form-control'%>
+        </div>
 
-      <div class="form-group">
-        <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
-      </div>
-    <% end %>
+        <div class="form-group">
+          <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-4">
@@ -35,7 +37,9 @@
           <%= working_time.project.name %>
           <%= working_time.time %>
           <%= working_time.approval? ? "承認済み" : "承認待ち" %>
-          <%= render 'shared/delete_link', path: working_time_path(working_time), title: working_time %>
+          <% if current_user == @user %>
+            <%= render 'shared/delete_link', path: working_time_path(working_time), title: working_time %>
+          <% end %>
         </li>
       <% end %>
     </ul>

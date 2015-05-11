@@ -4,19 +4,22 @@ class WorkingTimesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @working_time = WorkingTime.new
-    # @working_time = WorkingTime.find(params[:user_id])
-    # @working_time = WorkingTime.where(user_id: params[:user_id])
-    # @user.working_times
   end
 
   def create
     @user = User.find(params[:user_id])
-    @working_time = WorkingTime.new(working_time_params)
-    @working_time.user_id = @user.id
-    if @working_time.save
-      redirect_to user_working_times_path
+    if current_user == @user
+      @user = User.find(params[:user_id])
+      @working_time = WorkingTime.new(working_time_params)
+      @working_time.user_id = @user.id
+      if @working_time.save
+        redirect_to user_working_times_path
+      else
+        render 'index'
+      end
     else
-      render 'index'
+      flash[:danger] = "Don't touch me!"
+      redirect_to users_url
     end
   end
 
