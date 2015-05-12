@@ -5,9 +5,8 @@ describe "Authentication" do
   subject { page }
 
   describe "signin page" do
-    before { visit signin_path }
+    before { visit user_session_path }
 
-    it { should have_content('Sign in') }
-    it { should have_title('Sign in') }
+    it { should have_content('ログイン') }
   end
 end

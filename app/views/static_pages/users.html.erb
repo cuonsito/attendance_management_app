@@ -1,0 +1,9 @@
+<div class="center hero-unit">
+  <% provide(:title, 'List') %>
+  <h1>社員一覧</h1>
+  <h2>
+    <% @users.order(:id).each do |user| %>
+      <li><%= link_to user.username, user_working_times_path(user) %></li>
+    <% end %>
+  </h2>
+</div>

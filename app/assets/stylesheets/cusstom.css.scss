@@ -89,7 +89,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $gray-light;
-  position: fixed;
+  position: relative;
   bottom: 20px;
   a {
     color: $gray;
@@ -110,6 +110,35 @@ footer {
     }
   }
 }
+
+/* forms */
+
+input, textarea, select, .uneditable-input, .btn {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: auto;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+.inline form { display: inline; }
 
 /* cuon image */
 
@@ -152,4 +181,27 @@ footer {
   #row-1st-in {
       width: 100%;
   }  
+}
+
+
+/* working_time_index */
+
+ul.working_time_index table {
+  width: 85%;
+}
+
+
+
+/* working-time-form */
+
+div.working-time-form {
+  padding-left: 90px;
+}
+
+
+
+/* form-group */
+
+div.form-group {
+  padding-right: 20px;
 }
