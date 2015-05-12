@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'spring'

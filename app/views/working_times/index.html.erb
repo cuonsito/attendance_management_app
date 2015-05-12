@@ -29,52 +29,49 @@
   </div>
 <% end %>
 
-
 <div class="row">
   <!-- プロジェクトアサイン表示 -->
   <div class="col-md-4">
-    <ul>
-      <div class="panel panel-default">
-        <div class="panel-heading">Project Assain</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Project</th><th>Assain Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @user.members.each do |member| %>
-              <tr>
-                <td><%= member.project.name %></td>
-                <td><%= member.assain_rate %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </ul>
-  </div>
-
-  <!-- 勤怠情報表示 -->
-  <div class="col-md-8">
-    <ul class="working_time_index">
-      <table class="table table table-bordered">
+    <div class="panel panel-default">
+      <div class="panel-heading">Project Assain</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Project</th><th>Assain Rate</th>
+          </tr>
+        </thead>
         <tbody>
-          <% @user.working_times.order(:date).each do |working_time| %>      
+          <% @user.members.each do |member| %>
             <tr>
-              <td><%= working_time.date %></td>
-              <td><%= working_time.project.name %></td>
-              <td><%= working_time.time %></td>
-              <td><%= working_time.approval? ? "済" : "承認待ち" %></td>
-              <% if current_user == @user %>
-                <td>
-                  <%= render 'shared/delete_link', path: working_time_path(working_time), title: working_time %>
-                </td>
-              <% end %>
+              <td><%= member.project.name %></td>
+              <td><%= member.assain_rate %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-    </ul>
+    </div>
+  </div>
+
+  <!-- 勤怠情報表示 -->
+  <div class="col-md-8">
+    <table class="table table table-bordered">
+      <tbody>
+        <% @working_times_for_paginate.each do |working_time| %> 
+          <tr>
+            <td><%= working_time.date %></td>
+            <td><%= working_time.project.name %></td>
+            <td><%= working_time.time %></td>
+            <td><%= working_time.approval? ? "済" : "承認待ち" %></td>
+            <% if current_user == @user %>
+              <td>
+                <%= render 'shared/delete_link', path: working_time_path(working_time), title: working_time %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @working_times_for_paginate %>
   </div>
 </div>
+
