@@ -4,6 +4,7 @@ class WorkingTimesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @working_time = WorkingTime.new
+    @working_times_for_paginate = @user.working_times.order(:date).paginate(page: params[:page], per_page: 15)
   end
 
   def create
