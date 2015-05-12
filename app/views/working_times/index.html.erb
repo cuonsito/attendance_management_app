@@ -3,26 +3,28 @@
 <!-- 勤怠情報入力フォーム -->
 <% if current_user == @user %>
   <div class="row">
-    <div class="col-md-offset-5">
-      <%= form_for([@user, @working_time], :html => {class: "form-inline"}) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+    <div class="working-time-form">
+      <div class="col-md-offset-4">
+        <%= form_for([@user, @working_time], :html => {class: "form-inline"}) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
 
-        <div class="form-group">
-          <%= f.date_select 'date', {use_month_numbers: true}, class: 'form-control' %>
-        </div>
+          <div class="form-group">
+            <%= f.date_select 'date', {use_month_numbers: true}, class: 'form-control' %>
+          </div>
 
-        <div class="form-group">
-          <%= f.collection_select :project_id, @user.projects, :id, :name, {}, {:class => "form-control"} %>
-        </div>
+          <div class="form-group">
+            <%= f.collection_select :project_id, @user.projects, :id, :name, {}, {:class => "form-control"} %>
+          </div>
 
-        <div class="form-group">
-          <%= f.number_field :time, :placeholder => "time", max: 8.0, min: 0, step: 0.1, class: 'form-control'%>
-        </div>
+          <div class="form-group">
+            <%= f.number_field :time, :placeholder => "time", max: 8.0, min: 0, step: 0.1, class: 'form-control'%>
+          </div>
 
-        <div class="form-group">
-          <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
-        </div>
-      <% end %>
+          <div class="form-group">
+            <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
