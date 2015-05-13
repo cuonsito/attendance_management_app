@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:menu, :users]
+  before_action :authenticate_user!, only: [:menu, :users, :projects, :classes]
   before_action :home_page, only: :home
 
   def home
@@ -11,6 +11,12 @@ class StaticPagesController < ApplicationController
 
   def users
     @users = User.all
+  end
+
+  def projects
+  end
+
+  def classes
   end
 
   private
