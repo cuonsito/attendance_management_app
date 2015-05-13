@@ -1,16 +1,12 @@
 class StaticPagesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:menu, :users, :projects, :classes]
-  before_action :home_page, only: :home
+  before_action :authenticate_user!, only: [:menu, :projects, :classes]
 
   def home
+    redirect_to menu_path if signed_in?
   end
 
   def menu
-  end
-
-  def users
-    @users = User.all
   end
 
   def projects
@@ -18,12 +14,4 @@ class StaticPagesController < ApplicationController
 
   def classes
   end
-
-  private
-
-    def home_page
-      if signed_in?
-        redirect_to menu_path
-      end
-    end
 end

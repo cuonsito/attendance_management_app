@@ -31,8 +31,8 @@ describe "Menu Page", type: :request do
       it { should_not have_title('| Home') }
     end
 
-    context "click 社員一覧 link" do
-      before { click_link "社員一覧" }
+    context "click Users link" do
+      before { click_link "Users" }
       it { should have_title("| Users") }
     end
 
