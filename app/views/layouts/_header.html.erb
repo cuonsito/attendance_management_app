@@ -2,27 +2,21 @@
   <div class="navbar-inner">
     <div class="container">
       <div style="font-size:large">
-        <nav>
-<!--           <div class="nav pull-left">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p> 
-          </div> -->
-          <% if user_signed_in? %> 
-            <div class="nav pul-left">
-              <strong>Logged in as <%= current_user.email %></strong>
-            </div>
-            <div class="nav pull-right">
-              <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </div>
-          <% else %>
-            <%= link_to "Attendance Management App", root_path %>
-            <div class="nav pull-right">
-              <%= link_to "Sign up", new_user_registration_path %> |
-              <%= link_to "Login", new_user_session_path %>
-            </div>  
-          <% end %>
-        </nav>
+        <% if user_signed_in? %> 
+          <div class="nav pul-left">
+            <strong>Logged in as <%= current_user.email %></strong>
+          </div>
+          <div class="nav pull-right">
+            <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </div>
+        <% else %>
+          <%= link_to "Attendance Management App", root_path %>
+          <div class="nav pull-right">
+            <%= link_to "Sign up", new_user_registration_path %> |
+            <%= link_to "Login", new_user_session_path %>
+          </div>  
+        <% end %>
       </div>
     </div>
   </div>
