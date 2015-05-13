@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "List Pages" do
+describe "Users Page" do
 
   subject { page }
 
-  describe "List page", type: :request do
+  describe "Users page", type: :request do
     let(:user) { FactoryGirl.create(:user) }
     before do
       login user
@@ -15,4 +15,5 @@ describe "List Pages" do
     it { should have_title("Attendance Management App") }
     it { should have_title('| List') }
   end
+  
 end

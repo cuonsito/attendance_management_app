@@ -7,17 +7,17 @@
             <strong>Logged in as <%= current_user.email %></strong>
           </div>
           <div class="nav pull-right">
-            <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= link_to 'Edit profile', edit_user_registration_path %> |
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
             <% if yield(:show_users_link) == "true" %>
               | <%= link_to "社員一覧", users_path %>
             <% end %>
           </div>
         <% else %>
-          <%= link_to "Attendance Management App", root_path %>
+          <p>Attendance Management App</p>
           <div class="nav pull-right">
             <%= link_to "Sign up", new_user_registration_path %> |
-            <%= link_to "Login", new_user_session_path %>
+            <%= link_to "Log in", new_user_session_path %>
           </div>  
         <% end %>
       </div>

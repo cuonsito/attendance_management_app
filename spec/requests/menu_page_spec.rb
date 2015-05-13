@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Menu Pages" do
+describe "Menu Page" do
 
   subject { page }
 
@@ -10,9 +10,10 @@ describe "Menu Pages" do
       login user
       visit menu_path
     end
-
+    
     it { should have_content('Menu') }
     it { should have_title("Attendance Management App") }
     it { should have_title('| Menu') }
   end
+
 end
