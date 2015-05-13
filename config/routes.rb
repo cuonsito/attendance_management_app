@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index], shallow: true do 
     resources :working_times, only: [:index, :create, :destroy]
   end
+
+  patch 'user/:user_id/projects/:project_id/working_times/approve_all', to: 'working_times#approve_all', as: :approve_all
+
 end
