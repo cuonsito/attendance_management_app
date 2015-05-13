@@ -24,7 +24,7 @@ describe "Home Page", type: :request do
     it { should have_title("| Sign up") }
   end
 
-  describe "signed in user" do
+  context "for signed in user" do
     let(:user) { FactoryGirl.create(:user) }
     before do
       login user
