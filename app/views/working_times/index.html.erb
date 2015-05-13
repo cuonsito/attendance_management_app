@@ -1,3 +1,6 @@
+<% provide(:title, @user.username) %>
+<% provide(:show_users_link, "true") %>
+
 <h1><%= @user.username %>さんのマイページ</h1>
 
 <!-- 勤怠情報入力フォーム -->
@@ -37,7 +40,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Project</th><th>Assain Rate</th>
+            <th>Project</th><th>Assain Rate</th><th>Approval</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +48,11 @@
             <tr>
               <td><%= member.project.name %></td>
               <td><%= member.assain_rate %></td>
+              <td>
+                <% if current_user.members.find_by(project: member.project).try(:admin?) %>
+                  <%= link_to "confirm", approve_all_path(@user, member.project), method: :patch, data: { confirm: "You sure?" } %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

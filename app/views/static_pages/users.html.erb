@@ -1,5 +1,6 @@
+<% provide(:title, 'List') %>
+
 <div class="center hero-unit">
-  <% provide(:title, 'List') %>
   <h1>社員一覧</h1>
   <h2>
     <% @users.order(:id).each do |user| %>
