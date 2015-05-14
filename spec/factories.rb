@@ -6,13 +6,13 @@ FactoryGirl.define do
   end
 
   factory :project do
-  	name "project"
+    sequence(:name)  { |n| "Project #{n}" }
   end
 
   factory :member do
     user
     project
-    assain_rate 0.5
+    assain_rate 0.1
 
     factory :admin do
       admin true
