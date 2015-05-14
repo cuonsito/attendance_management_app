@@ -10,7 +10,7 @@
             <%= link_to 'Edit profile', edit_user_registration_path %> |
             <%= link_to "Log out", destroy_user_session_path, method: :delete %>
             <% if yield(:show_users_link) == "true" %>
-              | <%= link_to "社員一覧", users_path %>
+              | <%= link_to "User List", users_path %>
             <% end %>
           </div>
         <% else %>

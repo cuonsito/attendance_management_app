@@ -36,13 +36,13 @@ describe "Menu Page", type: :request do
       it { should have_title("| Users") }
     end
 
-    context "click プロジェクト一覧 profile link" do
-      before { click_link "プロジェクト一覧" }
+    context "click Projects profile link" do
+      before { click_link "Projects" }
       it { should have_title("| Projects") }
     end
 
-    context "click クラス一覧 link" do
-      before { click_link "クラス一覧" }
+    context "click Classes link" do
+      before { click_link "Classes" }
       it { should have_title("| Classes") }
     end
   end

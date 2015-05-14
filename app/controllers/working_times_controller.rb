@@ -1,14 +1,13 @@
 class WorkingTimesController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :working_times_for_paginate, only: [:index, :create]
+
 
   def index
-    @user = User.find(params[:user_id])
     @working_time = WorkingTime.new
-    @working_times_for_paginate = @user.working_times.order(:date, :project_id).paginate(page: params[:page], per_page: 15)
   end
 
   def create
-    @user = User.find(params[:user_id])
     if current_user == @user
       @user = User.find(params[:user_id])
       @working_time = WorkingTime.new(working_time_params)
@@ -45,6 +44,11 @@ class WorkingTimesController < ApplicationController
 
     def working_time_params
       params.require(:working_time).permit(:time, :date, :project_id)
+    end
+
+    def working_times_for_paginate
+      @user = User.find(params[:user_id])
+      @working_times_for_paginate = @user.working_times.order(:date, :project_id).paginate(page: params[:page], per_page: 15)
     end
 
 end

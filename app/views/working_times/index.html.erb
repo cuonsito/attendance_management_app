@@ -1,7 +1,7 @@
 <% provide(:title, @user.username) %>
 <% provide(:show_users_link, "true") %>
 
-<h1><%= @user.username %>さんのマイページ</h1>
+<h1>Mypage of <%= @user.username %></h1>
 
 <!-- 勤怠情報入力フォーム -->
 <% if current_user == @user %>
@@ -24,7 +24,7 @@
           </div>
 
           <div class="form-group">
-            <%= f.submit "勤怠登録", class: "btn btn-large btn-primary" %>
+            <%= f.submit "Register", class: "btn btn-large btn-primary" %>
           </div>
         <% end %>
       </div>
@@ -34,7 +34,7 @@
 
 <div class="row">
   <!-- プロジェクトアサイン表示 -->
-  <div class="col-md-4">
+  <div class="col-md-4", id="project-assain-list">
     <div class="panel panel-default">
       <div class="panel-heading">Project Assain</div>
       <table class="table">
@@ -61,7 +61,7 @@
   </div>
 
   <!-- 勤怠情報表示 -->
-  <div class="col-md-8">
+  <div class="col-md-8", id="working-time-list">
     <table class="table table table-bordered">
       <tbody>
         <% @working_times_for_paginate.each do |working_time| %> 
@@ -69,7 +69,7 @@
             <td><%= working_time.date %></td>
             <td><%= working_time.project.name %></td>
             <td><%= working_time.time %></td>
-            <td><%= working_time.approval? ? "済" : "承認待ち" %></td>
+            <td><%= working_time.approval? ? "approved" : "pending" %></td>
             <% if current_user == @user %>
               <td>
                 <%= render 'shared/delete_link', path: working_time_path(working_time), title: working_time %>
